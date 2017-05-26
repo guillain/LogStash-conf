@@ -11,7 +11,7 @@ Best Pratice for _real usage_
 
 Repartition by Virtual Machine
 0/ Source
-* _Install:_ filebeat, syslog (UDP)
+* _Install:_ filebeat, syslog (UDP), JSON/TCP
 * _What:_ Dedicated VM where the data source is/come from
 
 1/ Data collection
@@ -36,6 +36,7 @@ Lot of filters are ready and just you need to adapt your input (connectors) acco
 #### Input
 * 001-syslog-input.conf	--> UDP/5000
 * 002-beats-input.conf	--> TCP/5044
+* 004-bot-input.conf    --> TCP/5055
 
 #### Filter
 Most of them with based on the patterns included in the logstash-patterns-core distribution:
@@ -77,6 +78,7 @@ Provide log template to quickly integarte on your host where the data should com
 * dpkg
 * cucm-cdr
 * cucm-cmr
+* bot: based on JSON and dynamic index
 
 ## Cisco CDR
 Thanks to [Damienetwork](https://damienetwork.wordpress.com) and its [website](https://damienetwork.wordpress.com/2015/10/09/elk-setup-for-cucm-cdr/)
@@ -131,11 +133,14 @@ service filebeat restart
 * * apache
 * * CUCM CDR/CRM
 * logstash
+* NodeJS bot
+* Python bot
 ### Filter
 * syslog
 * apache
 * audit
 * login
+* bot
 ### Ouput
 * logstash
 * elasticsearch
