@@ -13,12 +13,15 @@ Repartition by Virtual Machine
 0/ Source
 * _Install:_ filebeat, syslog (UDP)
 * _What:_ Dedicated VM where the data source is/come from
+
 1/ Data collection
 * _Install:_ logstash
 * _What:_ Collect all source, index and push it to elasticsearch
+
 2/ Storage
 * _Install:_ elasticsearch
 * _What:_ Store and index all data
+
 3/ Interface
 * _Install:_ kibana
 * _What:_ Provide web interface for analytics reports
@@ -99,24 +102,34 @@ Principle:
 * Download the GeoIP database
 * Install the CUCM CDR/CDR features
 
-**Example**
+### Example on Logstash server
 ```bash
-service logstash stop
-mv /etc/logstash /etc/logstash.bkp
 git clone https://github.com/guillain/LogStash-conf
-mv LogStash-conf /etc/logstash
+cp LogStash-conf/logtash/* /etc/logstash/conf.d/
 cd /etc/logstash/
 curl -O "http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz"
 gunzip GeoLiteCity.dat.gz
-cd /opt/logstash/
-bin/plugin install logstash-filter-translate
-service logstash start
+/opt/logstash/bin/plugin install logstash-filter-translate
+service logstash restart
+```
+
+### Example on CentOS server to collect with Filebeat
+```bash
+yum install filebeat
+git clone https://github.com/guillain/LogStash-conf
+mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.orig
+cp LogStash-conf/filebeat/filebeat.yml /etc/filebeat/filebeat.yml
+service filebeat restart
 ```
 
 ## Configuration validated
 ### Input
 * syslog
 * filebeat
+* * syslog
+* * auditlog
+* * apache
+* * CUCM CDR/CRM
 * logstash
 ### Filter
 * syslog
