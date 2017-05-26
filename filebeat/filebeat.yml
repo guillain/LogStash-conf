@@ -1,0 +1,101 @@
+#=========================== Filebeat prospectors =============================
+filebeat.prospectors:
+    -
+      paths:
+        - /var/log/messages
+        - /var/log/cron
+        - /var/log/secure
+        - /var/log/maillog
+        - /var/log/firewalld
+      input_type: log
+      document_type: syslog
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/audit/audit.log
+      input_type: log
+      document_type: audit
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/redis/redis.log
+      input_type: log
+      document_type: redis
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/httpd/access_log
+      input_type: log
+      document_type: apache
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/httpd/*access.log
+      input_type: log
+      document_type: apache-other-vhost
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/httpd/*log
+      input_type: log
+      document_type: apache-error
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/yum.log
+      input_type: log
+      document_type: dpkg
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/cucm/CLUSTERID-FR0/cdr*
+      input_type: log
+      document_type: cucm-cdr
+      fields_under_root: true
+      fields:
+        cucm_clustername: CLUSTERID-FR0
+
+    -
+      paths:
+        - /var/log/cucm/CLUSTERID-FR0/cmr*
+      input_type: log
+      document_type: cucm-cmr
+      fields_under_root: true
+      fields:
+        cucm_clustername: CLUSTERID-FR0
+
+    -
+      paths:
+        - /var/log/cucm/CLUSTERID-SP0/cdr*
+      input_type: log
+      document_type: cucm-cdr
+      fields_under_root: true
+      fields:
+        cucm_clustername: CLUSTERID-SP0
+
+    -
+      paths:
+        - /var/log/cucm/CLUSTERID-SP0/cmr*
+      input_type: log
+      document_type: cucm-cmr
+      fields_under_root: true
+      fields:
+        cucm_clustername: CLUSTERID-SP0
+
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+  hosts: ["164.177.186.244:5044"]
+  ssl.enabled: false
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+  #ssl.certificate: "/etc/pki/tls/certs/logstash-forwarder.crt"
+  #ssl.key: "/etc/pki/tls/private/logstash-forwarder.key"
+#================================ Logging =====================================
+logging.level: debug
+
