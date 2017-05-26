@@ -52,7 +52,7 @@ Principle:
 * Download the GeoIP database
 
 **Example**
-bash```
+```bash
 service logstash stop
 mv /etc/logstash /etc/logstash.bkp
 git clone https://github.com/guillain/LogStash-conf
