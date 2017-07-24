@@ -55,6 +55,77 @@ filebeat.prospectors:
 
     -
       paths:
+        - /var/www/DigitalException/log/pod*.log
+      input_type: log
+      document_type: syslog
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/www/DigitalException/log/derogation*.log
+        - /var/www/DigitalException/log/bot*.log
+      input_type: log
+      document_type: shellbot
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/www/escalation/log/escalation*.log
+      input_type: log
+      document_type: bot
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/www/ServiceDeskBot/log/*.log
+      input_type: log
+      document_type: bot
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/www/SparkBotAdv/log/*.log
+      input_type: log
+      document_type: bot
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/www/SparkBotCmd/log/*.log
+      input_type: log
+      document_type: bot
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/www/TechRequest/log/*.log
+      input_type: log
+      document_type: syslog
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/VCS/*/*
+      input_type: log
+      document_type: vcs
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/infra/*/*
+      input_type: log
+      document_type: infra
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/cucm/sylog/*/*
+      input_type: log
+      document_type: cucm-syslog
+      fields_under_root: true
+
+    -
+      paths:
         - /var/log/cucm/CLUSTERID-FR0/cdr*
       input_type: log
       document_type: cucm-cdr
