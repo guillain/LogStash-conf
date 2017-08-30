@@ -1,0 +1,98 @@
+filebeat.prospectors:
+    -
+      paths:
+        - /var/log/messages
+        - /var/log/cron
+        - /var/log/secure
+        - /var/log/maillog
+        - /var/log/firewalld
+      input_type: log
+      document_type: syslog
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/audit/audit.log
+      input_type: log
+      document_type: audit
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/httpd/access_log
+      input_type: log
+      document_type: apache
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/httpd/*access.log
+      input_type: log
+      document_type: apache-other-vhost
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/httpd/*log
+      input_type: log
+      document_type: apache-error
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/yum.log
+      input_type: log
+      document_type: dpkg
+      fields_under_root: true
+
+    -
+#      paths:
+#        - /var/log/filebeat/filebeat
+#      input_type: log
+#      document_type: filebeat
+#      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/elasticsearch/*.log
+      input_type: log
+      document_type: elasticsearch
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/grafana/*.log
+      input_type: log
+      document_type: grafana
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/kibana/*.log
+      input_type: log
+      document_type: kibana
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/logstash/*.log
+      input_type: log
+      document_type: logstash
+      fields_under_root: true
+
+    -
+      paths:
+        - /var/log/nginx
+      input_type: log
+      document_type: nginx
+      fields_under_root: true
+
+output.logstash:
+  hosts: ["localhost:5044"]
+  ssl.enabled: false
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+  #ssl.certificate: "/etc/pki/client/cert.pem"
+  #ssl.key: "/etc/pki/client/cert.key"
+
+logging.level: debug
+#logging.selectors: ["*"]
