@@ -9,6 +9,8 @@ filebeat.prospectors:
       input_type: log
       document_type: syslog
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -16,6 +18,8 @@ filebeat.prospectors:
       input_type: log
       document_type: audit
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -23,6 +27,8 @@ filebeat.prospectors:
       input_type: log
       document_type: apache
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -30,6 +36,8 @@ filebeat.prospectors:
       input_type: log
       document_type: apache-other-vhost
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -37,6 +45,8 @@ filebeat.prospectors:
       input_type: log
       document_type: apache-error
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -44,8 +54,10 @@ filebeat.prospectors:
       input_type: log
       document_type: dpkg
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
-    -
+#    -
 #      paths:
 #        - /var/log/filebeat/filebeat
 #      input_type: log
@@ -58,6 +70,8 @@ filebeat.prospectors:
       input_type: log
       document_type: elasticsearch
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -65,6 +79,8 @@ filebeat.prospectors:
       input_type: log
       document_type: grafana
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -72,6 +88,8 @@ filebeat.prospectors:
       input_type: log
       document_type: kibana
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -79,6 +97,8 @@ filebeat.prospectors:
       input_type: log
       document_type: logstash
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
     -
       paths:
@@ -86,6 +106,8 @@ filebeat.prospectors:
       input_type: log
       document_type: nginx
       fields_under_root: true
+      fields:
+            clientip: mypublicIPaddress
 
 output.logstash:
   hosts: ["localhost:5044"]

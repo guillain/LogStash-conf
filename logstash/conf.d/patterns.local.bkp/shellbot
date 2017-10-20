@@ -1,0 +1,18 @@
+CHANNELID "channel_id"?:?"%{WORD:channel_id}"
+CONTENT "content"?:?"%{WORD:content}"
+CREATED "created"?:?"(?:%{SYSLOGTIMESTAMP:timestamp}|%{TIMESTAMP_ISO8601:timestamp8601})"
+FROMID "from_id"?:?"%{WORD:from_id}"
+FROMLABEL "from_label"?:?"%{WORD:from_label}"
+HOOK "hook"?:?"%{WORD:hook}"
+HTML "html"?:?"%{WORD:html}"
+ID "id"?:?"%{WORD:id}"
+ISDIRECT is_direct?:?%{WORD:is_direct}
+MARKDOWN "markdown"?:?"%{WORD:markdown}"
+MENTIONEDID "mentioned_ids"?:?"%{WORD:mentioned_ids}"
+PERSONID "personId"?:?"%{WORD:personId}"
+ROOMID "room_id"?:?"%{WORD:room_id}"
+ROOMTYPE "roomType"?:?"%{WORD:roomType}"
+TEXT "text"?:?"%{WORD:text}"
+TYPE "type"?:?"%{WORD:type}"
+
+SHELLBOTAUDIT ?%{CHANNELID}?,?%{CONTENT}?,?%{CREATED}?,?%{FROMID}?,?%{FROMLABEL}?,?%{HOOK}?,?%{HTML}?,?%{ID}?,?%{ISDIRECT}?,?%{MARKDOWN}?,?%{MENTIONEDID}?,?%{PERSONID}?,?%{ROOMID}?,?%{ROOMTYPE}?,?%{TEXT}?,?%{TYPE}?
