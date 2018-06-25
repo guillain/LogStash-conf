@@ -194,6 +194,6 @@ path.logs: /var/log/logstash
 # Where to find custom plugins
 # path.plugins: []
 
-#xpack.monitoring.elasticsearch.password: password
+#xpack.monitoring.elasticsearch.password: MyLogstashPa$$w0rd!
 #xpack.security.enabled: false
-xpack.monitoring.elasticsearch.url: ["ip address"]
+xpack.monitoring.elasticsearch.url: ["10.240.184.12"]

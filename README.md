@@ -26,9 +26,26 @@ Repartition by Virtual Machine
 * _Install:_ kibana
 * _What:_ Provide web interface for analytics reports
 
+## Installation
+Target path is done for standard package deployment done via package management tool (as yum, apt...).
+So if your settings are not in '/etc/x' thanks to adapt to your environment.
+
+### Filebeat
+`cp filebeat/* /etc/filebeat/`
+
+### Elasticsearch
+`cp elasticsearch/*yml /etc/elasticsearch/`
+
+### Logstash
+`\cp -fr logstash/* /etc/logstash/`
+
+
 ## Configuration files
 That's preconfigured files to be used like that. 
 No change is ok for run but some configuration adaption are require for production usage.
+
+### Elasticsearch
+Global file to manage the elasticsearch indexer according to the logstash and filebeat env to set.
 
 ### LogStash
 Lot of filters are ready and just you need to adapt your input (connectors) according to your systems.
